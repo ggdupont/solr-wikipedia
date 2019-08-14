@@ -183,12 +183,16 @@ public class WikiMediaIterator<T> implements Iterator<T> {
     }
 
     private boolean isStartPage() {
-        if (reader.isStartElement() && PAGE.equals(reader.getLocalName())) {
-            handler.startPage();
-            return true;
-        } else {
-            return false;
+        if (reader.isStartElement()){
+            if(PAGE.equals(reader.getLocalName()))
+            {
+                handler.startPage();
+                return true;
+            }
+
         }
+
+        return false;
     }
 
 }
